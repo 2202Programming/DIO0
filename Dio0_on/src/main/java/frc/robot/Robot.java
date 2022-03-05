@@ -90,7 +90,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    m_dio.set(SmartDashboard.getBoolean("Dio on (toggle)", true));
+    m_dio.set(SmartDashboard.getBoolean("DIO on (toggle)", true));
   }
 
   @Override
