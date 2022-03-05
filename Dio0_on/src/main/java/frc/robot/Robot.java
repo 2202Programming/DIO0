@@ -4,7 +4,7 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.DigitalOutput;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -20,7 +20,7 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
-  private DigitalOutput m_dio;
+  private DigitalInput m_dio;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -77,10 +77,7 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    m_dio = new DigitalOutput(0);
-    m_dio.set(true);
-    
-    SmartDashboard.putBoolean("DIO on (toggle)", true);
+    m_dio = new DigitalInput(0);
 
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
@@ -90,7 +87,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    m_dio.set(SmartDashboard.getBoolean("DIO on (toggle)", true));
+    SmartDashboard.putBoolean("DIO", m_dio.get());
   }
 
   @Override
